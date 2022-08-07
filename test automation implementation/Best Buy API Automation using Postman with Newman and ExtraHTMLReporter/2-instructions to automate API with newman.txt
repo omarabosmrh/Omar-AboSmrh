@@ -1,0 +1,94 @@
+
+----------------------------------------------
+Automate proposed list of test cases API Tests
+---------------------------------------------- 
+I Can work with 3 Methods or Tools to automate API Tests:-
+1- Rest Assured with TestNG,Java..etc.
+2-Robot Framework with (selenium,python).
+3- Postman Using Newman and NodeJS with ExtraHTML Reporter.
+============================================================
+
+so If we choose working with Postman now,
+you can Integrate automated testing into your CI/CD pipeline to ensure that any code changes won't break the API in production.
+Steps:-
+1. Understand the API
+Explore API Doc 
+then→
+Import API specification
+Import a Postman Collection
+
+2. Build test suite
+Write and run individual tests
+Then →
+Verify in Postman Collection Runner
+Run test suite in newman
+Chain tests together to create test suites
+Export reports
+Test across enviroments using variables
+
+
+3. Work and verify with your team
+Invite teammates to a workspace
+Analyze results and run reports together
+Fix issues or roll back using in-built version control
+
+
+4. Integrate with DevOps lifecycle
+Export test suite
+Set up integration with source code repository
+Add build step in continous integrations tool
+Use the Postman API
+
+
+
+#Validate Schema
+Use the schema as a single source of truth to write tests against your API.
+
+
+
+Broad Schema Support
+Use the API specification format of your choice in Postman. Write, edit, or import schema formats including RAML, WADL, OpenAPI, and GraphQL. Then generate collections directly from the schema.
+
+Edit and Version Schema
+Track and communicate changes to the API design by editing and versioning schemas in one central location. No more having to switch between tools.
+
+Maintain a Single Source of Truth
+Rely on your schema as a source of truth for API design and development and ensure all teams are working toward the same goal.
+
+
+#Write Test Suites
+Write test suites so that teams can debug together.
+
+
+Create test suites
+Write custom test suites in JavaScript in the Postman Sandbox for each request.
+ Use Postman's PM API to write even more powerful tests that allow you to assert a set of predefined rules for testing
+ to enable better and cleaner tests.
+
+Parameterize requests
+Avoid running the same test by testing multiple instances of the same request with parameterization.
+ Insert variables in any part of the request and Postman will replace them with values from a data file or
+ environment variable.
+
+Run the tests and debug
+Use the collection runner in the Postman app to test a collection and view the results in real time.
+ Or use Newman to view test results in the terminal. For any issues, debug in Postman's Console Log.
+ Built specifically for API development, it records the raw request and response, certificates, 
+and error logs from scripts.
+
+
+#Integrate Testing into Your CI/CD Pipeline
+Add a test suite as a build step to ensure your APIs are compatible.
+
+
+Streamline Development and Testing with a CI/CD Pipeline
+Reuse your test suites to create a CI/CD pipeline that tests at every push. You can seamlessly integrate your Postman instance with Jenkins to create your own pipeline or add it to your existing pipeline as a build step.
+
+Postman Scales Up With You
+Create more robust and bug-resistant programs by increasing test coverage and frequency. Postman and Newman, our command line tool, allow you to easily set up your own automated tests.
+
+Easily Manage Your Testing Sequences
+Aggregate your tests into a single automated test sequence. 
+
+Run and manage your test workflow from The Postman app,
+Postman monitoring, or from the command line with Newman.

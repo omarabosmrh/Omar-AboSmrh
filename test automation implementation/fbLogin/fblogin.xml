@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="fb login regression suite">
+	<parameter name="browser" value="firefox"></parameter>
+	<test name="Regression Test">
+
+		<classes>
+					<class name="tests.LoginWithDDTJsonFile" />
+			<class name="tests.LoginWithInvalidDataDDTJsonFile" />
+			<class name="tests.SignupWithDDTJsonFile" />
+			<class name="tests.userRegeisterationWithDDTandExelReader" />
+			<class name="tests.userRegeisterationWithDDTCSVFile" />
+			<class name="tests.userRegeisterationWithDDTFileJson" />
+
+
+		</classes>
+
+	</test> <!-- Test -->
+</suite> <!-- Suite -->

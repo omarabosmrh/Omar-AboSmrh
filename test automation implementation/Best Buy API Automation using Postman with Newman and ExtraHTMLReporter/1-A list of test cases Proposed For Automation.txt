@@ -1,0 +1,68 @@
+In API Testing we need To execute Test cases Such as:-
+
+1-Validate the keys with the Min. and Max range of APIs (e.g maximum and minimum length)
+2-Keys verification. If we have JSON, XML APIs we should verify it’s that all the keys are coming.
+3-Have a test case to do XML, JSON Schema validation.
+4-Verify the Parse the Response data
+5-Verify the JSON Schema validation, Verify the Field Type,Verify the Mandatory Fields
+6-Valid Response headers & Negative Testcases response
+7-Verify that how the APIs error codes handled.
+8-Verify the response HTTP status code.
+9-Valid Response payload
+10-Chaining Request verification.
+11-Verification of APIs with Data parameters.
+12-End to End CRUD flows
+13-Database Integrity Test Cases
+14-File Upload Testcases
+
+
+and Postman allows you to add any number of tests for each API
+
+
+Examples for TC Tests:-
+
+1- Automatically check that the status code is 200/201/400 .. etc
+
+pm.test("Status code is 200", function () 
+    pm.response.to.have.status(200);
+});{
+
+
+2- Check on a specific header in the response
+
+pm.test("Content-Type is present", function () 
+    pm.response.to.have.header("Content-Type");
+});{
+
+
+
+3- Check that the response time is bigger/smaller than a certain time
+
+pm.test("Response time is less than 200ms", function () {
+    pm.expect(pm.response.responseTime).to.be.below(200);
+});
+
+
+
+4- Check that the response contains a specific string
+
+pm.test("Body matches string", function () {
+    pm.expect(pm.response.text()).to.include("createdAt");
+});
+
+
+5- Check that the response totally equal to a specific string
+
+In this case it will pass if you send the request and the response body totally equal to the word "CreatedAt"
+
+
+6- Check that the JSON Response has a correct value for a specific key.
+
+pm.test("Your test name", function () {
+    var jsonData = pm.response.json();
+    pm.expect(jsonData.job).to.eql("leader");
+});
+
+
+So now we can add automated tests for all our APIs to ensure that our responses are correct and met the desired results.
+Simple note: Postman allows you to add any number of tests for each API.

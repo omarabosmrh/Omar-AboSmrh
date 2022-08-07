@@ -1,0 +1,352 @@
+1@ Status code
+
+pm.test("Status code is 200", function () {
+    pm.response.to.have.status(200);
+});
+
+
+2@response is ok?
+
+pm.test("response is ok", function () {
+    pm.response.to.have.status(200);
+});
+
+
+3@ Response should be a parsable JSON?
+
+
+let jsonResponse = pm.response.json();
+
+pm.test("Response should be a parsable JSON", function() {
+    pm.expect(jsonResponse).to.be.ok;
+});
+
+-------
+4@Response body should be an object?
+pm.test("Response body should be an object", function() {
+    pm.expect(jsonResponse).to.be.an('object');
+});
+
+================================================
+5@Response body should be in the correct format
+=====================================================
+pm.test("Response body should be in the correct format", function() {
+    pm.expect(jsonResponse.id).to.be.a('Number');
+    //pm.expect(jsonResponse.id).to.have.lengthOf(7);
+    pm.expect(jsonResponse.name).to.be.a('string');
+    pm.expect(jsonResponse.type).to.be.a('string');
+    pm.expect(jsonResponse.price).to.be.a('Number');
+    pm.expect(jsonResponse.upc).to.be.a('string');
+    pm.expect(jsonResponse.shipping).to.be.a('Number');
+    pm.expect(jsonResponse.description).to.be.a('string');
+    pm.expect(jsonResponse.model).to.be.a('string');
+    pm.expect(jsonResponse.url).to.be.a('string');
+    pm.expect(jsonResponse.image).to.be.a('string');
+    pm.expect(jsonResponse.createdAt).to.be.a('string');
+    pm.expect(jsonResponse.categories).to.be.a('array');
+});
+
+----------------------------------
+
+
+6@Body contains string?
+
+
+pm.test("Body contains string",() => {
+  pm.expect(pm.response.text()).to.include("id");
+});
+
+
+--------------------
+pm.test("Content-Type is present", function () {
+    pm.response.to.have.header("Content-Type");
+});
+
+pm.test("Content-Type is JSON", function () {
+    pm.response.to.be.json;
+})
+
+
+--------
+
+m.test("Body matches string", function () {
+    pm.expect(pm.response.text()).to.include("dddddd");
+});
+
+pm.test("Response time is less than 200ms", function () {
+    pm.expect(pm.response.responseTime).to.be.below(201);
+
+pm.test("Successful POST request", function () {
+    pm.expect(pm.response.code).to.be.oneOf([200,201,202]);
+});
+});
+pm.test("Status code name has string", function () {
+    pm.response.to.have.status("Created");
+});
+
+
+pm.test("Returns 7 char alphanumeric id", function () {
+    let jsonData = pm.response.json();
+    pm.expect(jsonData.form.someHash).to.match(/^[a-z0-9]{7}$/);
+});
+
+pm.test("Returns 15 char alhpanumeric id", function () {
+    let jsonData = pm.response.json();
+    pm.expect(jsonData.form.secondHash).to.match(/^[a-z0-9]{15}$/);
+});
+
+
+
+-----
+
+
+pm.test("Status code is 200", function () {
+    pm.response.to.have.status(200);
+});
+
+pm.test("Products does not include deleted product", function () {
+    let savedproductId = pm.environment.get("itemId");
+    pm.response.to.not.include(savedproductId);    
+});
+
+
+-----
+testing headers
+
+
+pm.test("Content-Type header is present", () => {
+  pm.response.to.have.header("Content-Type");
+});
+
+pm.test("Content-Type header is application/json", () => {
+  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');
+});
+
+pm.test("Content-Type header is application/json", () => {
+  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json; charset=utf-8');
+});
+
+
+-----
+pm.test("Cookie JSESSIONID is present", () => {
+  pm.expect(pm.cookies.has('JSESSIONID')).to.be.true;
+});
+
+pm.test("Cookie isLoggedIn has value 1", () => {
+  pm.expect(pm.cookies.get('isLoggedIn')).to.eql('1');
+});
+
+
+-------
+
+
+pm.test("Successful delete status response", function () {
+    let response = pm.response.json();
+    pm.expect(response.status).to.equal("service removed");
+});
+
+
+-----------
+
+var schema = {
+  "items": {
+    "type": "boolean"
+  }
+};
+
+var data1 = [true, false];
+var data2 = [true, 123];
+
+pm.test('Schema is valid', function() {
+  pm.expect(tv4.validate(data1, schema)).to.be.true;
+//   pm.expect(tv4.validate(data2, schema)).to.be.true; // this statement would not be true
+});
+
+
+------
+
+pm.test("Does not return password", function () {
+    let jsonData = pm.response.json();
+    pm.expect(jsonData.form.customerName).to.not.include("examplePassword");
+});
+
+
+
+
+pm.test("Check if user with id1 is Leanne Graham", function () {
+    var jsonData = pm.response.json();
+    pm.expect(jsonData[0].name).to.eql("Leanne Graham");
+});
+
+
+minimum and maxi
+sign up
+sign in
+forget password 
+checkout
+cancel order, 
+add address
+log out
+search
+cateogries
+as 
+add product
+coupons
+change language
+change country
+filtration
+
+
+cart
+
+Delivery Location Warning
+Verify that the application should give a warning message that “Change delivery area”
+Try Checkout for the product which is not deliverable in your area (cross-verify it through Check delivery area options)
+The application should pop up a corresponding error message.
+Verify that the user should successfully checkout the product.
+Verify that the correct  page is shown with all the necessary links and information.
+Verify that product should be successfully added to the cart.
+Verify that both the products should be shown in the cart and in the cart icon, 2 should be displayed.
+Verify that the Product should be removed from the cart and the Cart icon should show 1 item.
+Verify that the Product purchase page with all the available payment methods should be shown to the user.
+
+
+order
+Verify that the Order Confirmation message should be shown to the user.
+Verify that the order id shown in the Order confirmation message should be correct and OMS should have an entry for that.
+
+Verify that the Order Confirmation message should be shown to the user.
+Verify that the links should direct to the appropriate pages
+
+
+Gift Coupon:
+
+Verify Gift Coupon availability along with its code should be tagged with the product in a user-friendly manner.
+Verify that the Gift Coupon amount should be successfully deducted during checkout.
+
+Verify that the Discount Coupon amount should be successfully deducted during checkout.
+Verify that the app should pop up a warning message stating “The coupon has been already used”
+Verify that the app should pop up a warning message stating “Invalid code”.
+
+
+payment
+
+Verify that all the below options should be displayed :
+Internet Banking
+Credit Card (Visa/Master)
+Debit Card (Visa/MasterCard/Maestro)
+Paid by Gift certificate
+Airtel Money
+EMI option of the Credit Card
+Check/DD
+
+Verify that all the payment modes should be working fine
+
+
+Add To Cart:
+Test Scenario For Single Product Add To Cart
+Verify that the correct PDP page is shown with all the necessary links and information.
+Verify that product should be successfully added to the cart and in the Cart icon, 1 should be displayed.
+
+Multiple Products Add To Cart:
+Verify that the correct PDP page is shown with all the necessary links and information.
+Verify that product should be successfully added to the cart.
+Verify that both the products should be shown in the cart and in the cart icon, 2 should be displayed.
+
+Edit Quantity Validation Cart:
+Verify that the correct PDP page is shown with all the necessary links and information.
+Verify that product should be successfully added to the cart.
+Verify that the quantity of the items should be successfully edited if the user gives an integer value otherwise a warning message should be displayed to the user.
+
+Edit Quantity Cart Boundry Value:
+Test steps for Edit Quantity Cart Boundry Value:
+
+Select any product.
+Select Add to Cart icon for the Product.
+Try editing the quantity of the item in the cart with a value greater than 5 and try checkout.
+Test Scenarios:
+
+Verify that the correct PDP page is shown with all the necessary links and information.
+Verify that product should be successfully added to the cart.
+Verify that if the item quantity count is greater than 5 then checkout is not allowed and an appropriate error should be presented to the user for the same.
+
+
+
+
+
+
+
+
+
+Check the behavior of form by not filling up any data into the form.
+Check them by not filling up the required fields.
+Check the behavior of form by adding random data in the text field.
+Check them by not filling up the full name text field but by filling up the rest of the other fields.
+Check the behavior of form by filling other text fields except for address text fields.
+Check the form by filling other text fields except for the phone number text field.
+Check the form by filling other text fields except for the email text field.
+
+User Registration Form Testing Email Field
+
+Check the Email text field that has an Email address without @ symbol.
+Check the Email text field that has a random string instead of a real email.
+Check the Email text field that has @ symbol written in words.
+Check the Email text field that has a missing dot in the email address.
+Check the Email text field as “name@gmail.”
+Check the Email text field as “@gmail.”
+Check the Email text field as “name@gmail..com.”
+Check the Email text field as “name@192.168.1.1.0.”
+Check the Email text field as “name.. @gmail.com.”
+
+
+Test Cases For Forget Password
+Check the forget password link is available in the login screen or not.
+Check on click of forget password link user should be redirected to the forget password page.
+Check is the email field is present on the forget password page to recover the password.
+Check that forgot password page have the valid fields as per requirement or not (email text box , send button , etc).
+Check that when user enter the valid email id and click on send button.
+Check the forgot password functionality when user enter the wrong email id and click on send button.
+Check the forgot password functionality when user enter valid email id and click on send button then a forgot password link received on entered email id or not.
+Check the alert message when user enter the unregistered email id and click on save.
+Check that Confirmation message showing or not when user enter valid registered email id and click on send button.
+Check the recover link is sent with the mail to which the user has provided.
+Check the sent password link should be disabled on clicking on multiple times on the link or as per specification and requirement.
+Check the functionality if there is resend button.
+Check the time duration to access the link.
+Check the link sent to the user should expire after a certain time.
+Check whether the link can be used once or how many times.
+Check that after clicking on received forgot password link it open in new window or not.
+Check the new password page have the valid fields as per requirement or not (new password text box, confirm new password and save/submit button etc).
+Check whether it asks to type a new password and retype the new password.
+Check whether the user enters the new password and retype/confirmn the password both should match until the new password should not be set.
+Check is the error message is displaying when both password are not matched.
+Check the sucess message showing or not when user save the password successfully.
+Check whether once the password is set then the account should ask the user to move to his account or exit.
+Check once the user update password, the user should be log out from all browser and devices. (As per the requirements)
+Check whether the user login with the new password is working.
+
+
+
+Payment Functionality Test Cases
+Check that anyone or all different types of Payment facilities should be available like Payment by Credit Card, Debit Card, Internet Banking, Paypal, Paytm, Stripe, Payment by ATM to ATM fund transfer, Cash On Delivery, By Cheque, Demand Draft, Cash, etc.
+Check that Payment should be stopped or timeout if it Payment is taking more time.
+Check that Amount should be valid before Payment.
+Check that all valid security measures should be matched correctly according to the Payment type before final Payment.
+Check that Payment should be done if all valid processes are completed step by step according to the Payment type.
+Check that after Payment, an Invoice should be generated.
+Check that Invoice should be mentioned in all the details correctly and Paid amount should be the same.
+Check that pre Payment or post Payment information should be clear for any particular product or service.
+Check that Payment details such as products or services names, their costs, total cost, discounts, Terms & Conditions, etc for multiple products or services or a combination of products and services should be clearly shown before and after Payment.
+Check that any discrepancies in Order should lead to the Payment cancellation.
+Check that the Payment return policy should be clearly predefined.
+Check that if no service or product is selected then it should not lead to the Payment functionality.
+Check that if any error or discrepancy arises while Payment processing (example: 90% done) then the total Payment should be canceled.
+Check that in case of By Part Payment, Payment should be canceled after delivering some parts of the full payment according to the Terms and Conditions.
+Check that Payment should be done by multiple users or single users to the multiple provider or single provider.
+Check that valid amount should not be Paid by invalid mode or currency or cheque etc.
+Check that valid mode or currency or cheque etc should not be used to Pay the invalid amount.
+Check that Payment should not be done for illegal products, services, or activities.
+Check that Payment by force should not be done and proper security measures should be followed to stop this activity.
+Check those fake payments like invalid credit or debit cards, card cloning activity, username or password theft, hacking, snatching, forgery, false signature, etc should not be done at any cost.
+
+
